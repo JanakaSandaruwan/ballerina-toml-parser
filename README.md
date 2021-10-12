@@ -22,8 +22,8 @@ Organization Name
 ```
   build:
     steps:
-    - name: Choreo Toml Parser
-      uses: choreo-templates/ballerina-toml-parser@v1
+    - name: Ballerina Toml Parser
+      uses: choreo-templates/ballerina-toml-parser@1.0
       with:
        type: ${{secrets.DOMAIN}}
        org: ${{secrets.ORG_ID}}
