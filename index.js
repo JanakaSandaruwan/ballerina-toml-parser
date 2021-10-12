@@ -10,8 +10,8 @@ try {
 
     switch (type) {
         case 'edit':
-            const name = core.getInput('name').replace(/[^\w-]+/g, "").replace("-", "_");
-            const org = core.getInput('org').replace(/[^\w-]+/g, "").replace("-", "_");
+            const name = core.getInput('name').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
+            const org = core.getInput('org').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
             var package = new Object();
             if (config.package) {
                 package = config.package;
