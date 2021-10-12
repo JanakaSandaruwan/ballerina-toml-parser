@@ -1,0 +1,19 @@
+{
+  "name": "choreo-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Achala Dias",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^4.0.0",
+    "js-yaml": "^4.1.0",
+    "json2toml": "^2.2.1",
+    "node-fetch": "^3.0.0",
+    "toml": "^3.0.0"
+  }
+}

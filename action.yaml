@@ -1,0 +1,25 @@
+name: 'Choreo Ballerina Toml Parser'
+description: 'Support to handle read and edit operations in Ballerina.toml file'
+author: WSO2
+branding:
+  icon: 'arrow-up-circle'
+  color: 'orange'
+inputs:
+  type:
+    description: 'File operation type'
+    required: false
+    default: 'edit'
+  name:
+    description: 'Project Name'
+    required: false
+    default: 'project-01'
+  org:
+    description: 'Organization Name'
+    required: false
+    default: 'org-01'
+outputs:
+  choreo-status:
+    description: 'Status of file'
+runs:
+  using: 'node12'
+  main: 'index.js'
