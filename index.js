@@ -18,7 +18,7 @@ try {
             }
             package.name = name;
             package.org = org;
-            package.version = '1.0.0';
+            // package.version = '1.0.0';
             config.package = package;
             fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
             break;
