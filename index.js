@@ -21,19 +21,32 @@ try {
             // package.version = '1.0.0';
             config.package = package;
             fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
+            const cloudToml = {
+                settings: {
+                    buildImage: false
+                }
+            };
+            fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
             break;
         case 'read':
             var workspace = 'workspace';
             if (config.package) {
+                // 1. replace default workspace name
                 if (config.package.name) {
                     workspace = config.package.name
                 }
+                // 2. generate choreo.toml
+                if (config.package.name && config.package.org) {
+                    var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
+                    var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
+                    const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
+                    fs.writeFileSync('.choreo/Choreo.toml', contex, 'utf-8');
+                }
             }
-            fs.writeFileSync('./workspace.txt', workspace);
             break;
         default:
             break;
     }
 } catch (error) {
-    console.log(error, "Ballerinal.toml file not found!");
+    console.log(error, "Ballerinal.toml not found!");
 }

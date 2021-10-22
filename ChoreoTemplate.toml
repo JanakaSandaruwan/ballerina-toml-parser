@@ -1,0 +1,20 @@
+[ballerina]
+
+  [ballerina.log]
+    format = "json"
+    level = "INFO"
+
+    [[ballerina.log.modules]]
+      level = "DEBUG"
+      name = "{{orgName}}/{{appName}}"
+
+  [ballerina.observe]
+    enabled = true
+    provider = "choreo"
+
+[ballerinax]
+
+  [ballerinax.choreo]
+    applicationSecret = "sec_xxxxxxxxxxxxxxxxx"
+    reporterHostname = "periscope-predev.dv.choreo.dev"
+    reporterPort = 443
