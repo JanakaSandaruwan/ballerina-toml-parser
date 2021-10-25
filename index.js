@@ -3,7 +3,6 @@ const core = require('@actions/core');
 const fs = require('fs');
 const toml = require('toml');
 var json2toml = require('json2toml');
-const { exec } = require("child_process");
 
 try {
     const type = core.getInput('type');
@@ -50,7 +49,7 @@ try {
                     //                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
                     //                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
                     //                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
-                    fs.writeFileSync('.choreo/Choreo.toml', contex, 'utf-8');
+                    fs.writeFileSync('Config.toml', contex, 'utf-8');
                 }
             }
             fs.writeFileSync('workspace.txt', workspace, 'utf-8');
