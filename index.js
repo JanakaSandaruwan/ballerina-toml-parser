@@ -30,16 +30,15 @@ try {
             fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
             break;
         case 'read':
-            const contex = '[ballerina]\
-  [ballerina.observe]\
-    enabled = true\
-    provider = "choreo"\
-
-[ballerinax]\
-
-  [ballerinax.choreo]\
-    reporterHostname = "periscope.preview-dv.choreo.dev"\
-    reporterPort = 443';
+            const contex = '\
+            [ballerina]\
+                [ballerina.observe]\
+                    enabled = true\
+                    provider = "choreo"\
+            [ballerinax]\
+                [ballerinax.choreo]\
+                reporterHostname = "periscope.preview-dv.choreo.dev"\
+                reporterPort = 443';
             var workspace = 'workspace';
             if (config.package) {
                 // 1. replace default workspace name
@@ -48,9 +47,9 @@ try {
                 }
                 // 2. generate choreo.toml
                 if (config.package.name && config.package.org) {
-//                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
-//                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
-//                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
+                    //                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
+                    //                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
+                    //                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
                     fs.writeFileSync('.choreo/Choreo.toml', contex, 'utf-8');
                 }
             }
