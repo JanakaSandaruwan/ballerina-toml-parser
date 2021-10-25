@@ -3,6 +3,7 @@ const core = require('@actions/core');
 const fs = require('fs');
 const toml = require('toml');
 var json2toml = require('json2toml');
+const { exec } = require("child_process");
 
 try {
     const type = core.getInput('type');
@@ -29,6 +30,17 @@ try {
             fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
             break;
         case 'read':
+            exec("ls -la", (error, stdout, stderr) => {
+                if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+                }
+                if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+                    }
+            console.log(`stdout: ${stdout}`);
+        });
             var workspace = 'workspace';
             if (config.package) {
                 // 1. replace default workspace name
