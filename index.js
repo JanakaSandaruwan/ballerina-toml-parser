@@ -30,14 +30,14 @@ try {
             break;
         case 'read':
             const contex = '\
-            [ballerina]\
-                [ballerina.observe]\
-                    enabled = true\
-                    provider = "choreo"\
-            [ballerinax]\
-                [ballerinax.choreo]\
-                reporterHostname = "periscope.preview-dv.choreo.dev"\
-                reporterPort = 443';
+            [ballerina]\n\
+                [ballerina.observe]\n\
+                    enabled = true\n\
+                    provider = "choreo"\n\
+            [ballerinax]\n\
+                [ballerinax.choreo]\n\
+                    reporterHostname = "periscope.preview-dv.choreo.dev"\n\
+                    reporterPort = 443';
             var workspace = 'workspace';
             if (config.package) {
                 // 1. replace default workspace name
@@ -45,13 +45,14 @@ try {
                     workspace = config.package.name
                 }
                 // 2. generate choreo.toml
-                if (config.package.name && config.package.org) {
-                    //                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
-                    //                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
-                    //                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
-                    fs.writeFileSync('Config.toml', contex, 'utf-8');
-                }
+                // if (config.package.name && config.package.org) {
+                //     //                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
+                //     //                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
+                //     //                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
+                   
+                // }
             }
+            fs.writeFileSync('Config.toml', contex, 'utf-8');
             fs.writeFileSync('workspace.txt', workspace, 'utf-8');
             break;
         default:
