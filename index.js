@@ -12,6 +12,8 @@ try {
         case 'edit':
             const name = core.getInput('name').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
             const org = core.getInput('org').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
+            const template = core.getInput('template');
+            
             var package = new Object();
             if (config.package) {
                 package = config.package;
@@ -20,14 +22,18 @@ try {
             package.org = org;
             // package.version = '1.0.0';
             config.package = package;
-            fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
             const cloudToml = {
                 settings: {
                     buildImage: false
                 }
             };
+            if(template === 'service' || template === 'main' || template = 'webhook') {
+                 fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
+            }
+           
             fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
             break;
+            
         case 'read':
             const contex = '\
             [ballerina]\n\
