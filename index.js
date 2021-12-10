@@ -27,7 +27,7 @@ try {
                     buildImage: false
                 }
             };
-            if(template === 'service' || template === 'main' || template = 'webhook') {
+            if(template === 'service' || template === 'main' || template === 'webhook') {
                  fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
             }
            
