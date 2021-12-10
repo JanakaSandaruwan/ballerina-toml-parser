@@ -17,6 +17,10 @@ inputs:
     description: 'Organization Name'
     required: false
     default: 'org-01'
+  template:
+    description: 'Component Template'
+    required: false
+    default: 'service'
 outputs:
   choreo-status:
     description: 'Status of file'
