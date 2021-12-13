@@ -19,6 +19,7 @@ try {
                 package = config.package;
             }
             
+            package.name = name;
             package.org = org;
             // package.version = '1.0.0';
             config.package = package;
@@ -27,8 +28,8 @@ try {
                     buildImage: false
                 }
             };
-            if(template === 'service' || template === 'main' || template === 'webhook') {
-                package.name = name;
+            if(template != 'service' || template != 'main' || template != 'webhook') {
+                package.export = [name]
             }
             
             fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
