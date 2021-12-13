@@ -18,7 +18,7 @@ try {
             if (config.package) {
                 package = config.package;
             }
-            package.name = name;
+            
             package.org = org;
             // package.version = '1.0.0';
             config.package = package;
@@ -27,9 +27,9 @@ try {
                     buildImage: false
                 }
             };
-//             if(template === 'service' || template === 'main' || template === 'webhook') {
-//                  fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
-//             }
+            if(template === 'service' || template === 'main' || template === 'webhook') {
+                package.name = name;
+            }
             
             fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
             fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
