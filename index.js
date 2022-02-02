@@ -21,7 +21,6 @@ try {
             
             package.name = name;
             package.org = org;
-            // package.version = '1.0.0';
             config.package = package;
             const cloudToml = {
                 settings: {
@@ -48,17 +47,10 @@ try {
                     reporterPort = 443';
             var workspace = 'workspace';
             if (config.package) {
-                // 1. replace default workspace name
+                // Replace default workspace name
                 if (config.package.name) {
                     workspace = config.package.name
                 }
-                // 2. generate choreo.toml
-                // if (config.package.name && config.package.org) {
-                //     //                     var data = fs.readFileSync('./ChoreoTemplate.toml', 'utf-8');
-                //     //                     var dataWithOrg = data.replace(/{{orgName}}/g, config.package.org);
-                //     //                     const contex = dataWithOrg.replace(/{{appName}}/g, config.package.name);
-                   
-                // }
             }
             fs.writeFileSync('Config.toml', contex, 'utf-8');
             fs.writeFileSync('workspace.txt', workspace, 'utf-8');
