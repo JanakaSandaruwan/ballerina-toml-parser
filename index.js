@@ -5,8 +5,9 @@ const toml = require('toml');
 var json2toml = require('json2toml');
 
 try {
+    const subPath = core.getInput('subPath');
     const type = core.getInput('type');
-    const config = toml.parse(fs.readFileSync('./Ballerina.toml', 'utf-8'));
+    const config = toml.parse(fs.readFileSync(`${subPath}/Ballerina.toml`, 'utf-8'));
 
     switch (type) {
         case 'edit':
@@ -31,8 +32,8 @@ try {
                 package.export = [name]
             }
             
-            fs.writeFileSync('./Ballerina.toml', json2toml(config, { indent: 2, newlineAfterSection: true }));
-            fs.writeFileSync('./Cloud.toml', json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
+            fs.writeFileSync(`${subPath}/Ballerina.toml`, json2toml(config, { indent: 2, newlineAfterSection: true }));
+            fs.writeFileSync(`${subPath}/Cloud.toml`, json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
             break;
             
         case 'read':
@@ -52,8 +53,8 @@ try {
                     workspace = config.package.name
                 }
             }
-            fs.writeFileSync('Config.toml', contex, 'utf-8');
-            fs.writeFileSync('workspace.txt', workspace, 'utf-8');
+            fs.writeFileSync(`${subPath}/Config.toml`, contex, 'utf-8');
+            fs.writeFileSync(`${subPath}/workspace.txt`, workspace, 'utf-8');
             break;
         default:
             break;
