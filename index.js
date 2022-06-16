@@ -5,9 +5,9 @@ const toml = require('toml');
 var json2toml = require('json2toml');
 
 try {
-    const type = core.getInput('type');
-    const config = toml.parse(fs.readFileSync('./Ballerina.toml', 'utf-8'));
     const subPath = core.getInput('subPath');
+    const type = core.getInput('type');
+    const config = toml.parse(fs.readFileSync(`${subPath}/Ballerina.toml`, 'utf-8'));
 
     switch (type) {
         case 'edit':
