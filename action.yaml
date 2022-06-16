@@ -21,6 +21,9 @@ inputs:
     description: 'Component Template'
     required: false
     default: 'service'
+  subPath:
+    description: 'Component Template'
+    required: false
 outputs:
   choreo-status:
     description: 'Status of file'
