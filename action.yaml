@@ -25,6 +25,10 @@ inputs:
     description: 'Component subPath'
     required: false
     default: '.'
+  componentType:
+    description: 'Component Type'
+    required: false
+    default: 'ChoreoManaged'
 outputs:
   choreo-status:
     description: 'Status of file'
