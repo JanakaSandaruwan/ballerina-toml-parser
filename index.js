@@ -23,8 +23,8 @@ try {
             }
 
             if (componentType === enums.ChoreoRepository.USER_MANAGE_NON_EMPTY) {
-                !package?.name ? package.name = name : null;
-                !package?.org ? package.org = org : null;
+                !package.name ? package.name = name : null;
+                !package.org ? package.org = org : null;
             } else {
                 package.name = name;
                 package.org = org;
