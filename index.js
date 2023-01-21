@@ -14,6 +14,25 @@ try {
             const name = core.getInput('name').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
             const org = core.getInput('org').replace(/[^\w-_]+/g, "").replace(/[^\w]+/g, "_");
             const template = core.getInput('template');
+
+            const isCloudTomlExists = fs.existsSync(`${subPath}/Cloud.toml`);
+            let cloudToml = {};
+            if (isCloudTomlExists) {
+                cloudToml = toml.parse(fs.readFileSync(`${subPath}/Cloud.toml`, 'utf-8'));
+                if (cloudToml.settings) {
+                    cloudToml.settings.buildImage = false
+                } else {
+                    cloudToml.settings = {
+                        buildImage: false
+                    };
+                }
+            } else {
+                cloudToml = {
+                    settings: {
+                        buildImage: false
+                    }
+                };
+            }
             
             var package = new Object();
             if (config.package) {
@@ -23,11 +42,6 @@ try {
             package.name = name;
             package.org = org;
             config.package = package;
-            const cloudToml = {
-                settings: {
-                    buildImage: false
-                }
-            };
             if(template != 'service' || template != 'main' || template != 'webhook') {
                 package.export = [name]
             }
