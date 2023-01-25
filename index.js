@@ -45,11 +45,25 @@ try {
                 }
             }
             config.package = package;
-            const cloudToml = {
-                settings: {
-                    buildImage: false
+
+            const isCloudTomlExists = fs.existsSync(`${subPath}/Cloud.toml`);
+            let cloudToml = {};
+            if (isCloudTomlExists) {
+                cloudToml = toml.parse(fs.readFileSync(`${subPath}/Cloud.toml`, 'utf-8'));
+                if (cloudToml.settings) {
+                    cloudToml.settings.buildImage = false
+                } else {
+                    cloudToml.settings = {
+                        buildImage: false
+                    };
                 }
-            };
+            } else {
+                cloudToml = {
+                    settings: {
+                        buildImage: false
+                    }
+                };
+            }
 
             fs.writeFileSync(`${subPath}/Ballerina.toml`, json2toml(config, { indent: 2, newlineAfterSection: true }));
             fs.writeFileSync(`${subPath}/Cloud.toml`, json2toml(cloudToml, { indent: 2, newlineAfterSection: true }));
