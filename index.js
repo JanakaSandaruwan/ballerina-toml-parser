@@ -52,15 +52,18 @@ try {
                 cloudToml = toml.parse(fs.readFileSync(`${subPath}/Cloud.toml`, 'utf-8'));
                 if (cloudToml.settings) {
                     cloudToml.settings.buildImage = false
+                    cloudToml.settings.thinJar = false
                 } else {
                     cloudToml.settings = {
-                        buildImage: false
+                        buildImage: false,
+                        thinJar: false
                     };
                 }
             } else {
                 cloudToml = {
                     settings: {
-                        buildImage: false
+                        buildImage: false,
+                        thinJar: false
                     }
                 };
             }

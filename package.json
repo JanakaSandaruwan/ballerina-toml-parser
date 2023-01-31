@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js --license licenses.txt"
   },
   "author": "Achala Dias",
   "license": "ISC",
@@ -13,7 +14,7 @@
     "@actions/github": "^4.0.0",
     "js-yaml": "^4.1.0",
     "json2toml": "^2.2.1",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "^3.3.0",
     "toml": "^3.0.0"
   }
 }
