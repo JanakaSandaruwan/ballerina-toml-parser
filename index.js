@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-// const github = require('@actions/github');
 const fs = require('fs');
 const toml = require('toml');
 var json2toml = require('json2toml');
