@@ -8,6 +8,7 @@ const ChoreoRepository = {
     CHOREO_MANAGE: "ChoreoManaged",
     USER_MANAGE: "UserManagedEmpty",
     USER_MANAGE_NON_EMPTY: "UserManagedNonEmpty",
+    USER_MANAGE_BUILDPACKS: "UserManagedBuildpacks"
 }
 
 const ChoreoBasicTemplates = ["service", "main", "webhook"]
@@ -9745,7 +9746,7 @@ try {
                 package = config.package;
             }
 
-            if (componentType === enums.ChoreoRepository.USER_MANAGE_NON_EMPTY) {
+            if (componentType === enums.ChoreoRepository.USER_MANAGE_NON_EMPTY || componentType === enums.ChoreoRepository.USER_MANAGE_BUILDPACKS) {
                 !package.name ? package.name = name : null;
                 !package.org ? package.org = org : null;
             } else {
