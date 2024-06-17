@@ -21,7 +21,7 @@ try {
                 package = config.package;
             }
 
-            if (componentType === enums.ChoreoRepository.USER_MANAGE_NON_EMPTY) {
+            if (componentType === enums.ChoreoRepository.USER_MANAGE_NON_EMPTY || componentType === enums.ChoreoRepository.USER_MANAGE_BUILDPACKS) {
                 !package.name ? package.name = name : null;
                 !package.org ? package.org = org : null;
             } else {
