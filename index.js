@@ -69,15 +69,6 @@ try {
             break;
 
         case 'read':
-            const contex = '\
-            [ballerina]\n\
-                [ballerina.observe]\n\
-                    enabled = true\n\
-                    provider = "choreo"\n\
-            [ballerinax]\n\
-                [ballerinax.choreo]\n\
-                    reporterHostname = "periscope.preview-dv.choreo.dev"\n\
-                    reporterPort = 443';
             var workspace = 'workspace';
             if (config.package) {
                 // Replace default workspace name
@@ -85,7 +76,6 @@ try {
                     workspace = config.package.name
                 }
             }
-            fs.writeFileSync(`${subPath}/Config.toml`, contex, 'utf-8');
             fs.writeFileSync(`${subPath}/workspace.txt`, workspace, 'utf-8');
             break;
         default:
